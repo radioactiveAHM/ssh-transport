@@ -1,0 +1,15 @@
+{
+	"sshAddr": "127.0.0.1:22",
+	"ws": {
+		"listen": "0.0.0.0:5153",
+		"path": "/",
+		"tls": true,
+		"certPath": "cert.pem",
+		"keyPath": "key.pem"
+	},
+	"tls": {
+		"listen": "0.0.0.0:8443",
+		"certPath": "cert.pem",
+		"keyPath": "key.pem"
+	}
+}

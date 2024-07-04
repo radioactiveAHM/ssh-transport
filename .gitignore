@@ -9,6 +9,7 @@
 *.dylib
 /dist
 *.pem
+ssh-transport
 
 # Test binary, built with `go test -c`
 *.test

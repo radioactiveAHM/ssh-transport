@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"log"
 	"net"
+	"strings"
 )
 
 func SshTls(tlsListenAddr string, sshAddr string) {
@@ -18,8 +19,13 @@ func SshTls(tlsListenAddr string, sshAddr string) {
 	// TLS Config
 	tlsConfig := &tls.Config{Certificates: []tls.Certificate{cert}}
 
+	// This is a dirty way to valid ipv6 but works fine :) .
+	ipv := "tcp"
+	if strings.Contains(tlsListenAddr, "::") {
+		ipv = "tcp6"
+	}
 	// TLS Listener
-	tls_conn, tls_e := tls.Listen("tcp", tlsListenAddr, tlsConfig)
+	tls_conn, tls_e := tls.Listen(ipv, tlsListenAddr, tlsConfig)
 	if tls_e != nil {
 		log.Println(tls_e.Error())
 		return
